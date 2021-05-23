@@ -12,115 +12,115 @@ import MenuItem from "@material-ui/core/MenuItem";
 import ProfilePic from "../../assets/profilePic.png";
 
 const classes = (theme) => ({
-    searchContainer: {
-        borderRadius: "4px",
-        backgroundColor: "#c0c0c0",
-        width: "300px",
-        display: "flex",
-        flexFlow: "row nowrap",
-        alignItems: "center",
-        justifyItems: "center",
-        padding: "0 10px",
-        margin: "0 10px",
-    },
-    searchIcon: {
-        width: "30px",
-    },
-    searchBar: {
-        width: "100%",
-    },
-    avatar: {
-        width: "30px",
-        height: "30px",
-        margin: "0 10px",
-        border: "1px solid white",
-    },
+  searchContainer: {
+    borderRadius: "4px",
+    backgroundColor: "#c0c0c0",
+    width: "300px",
+    display: "flex",
+    flexFlow: "row nowrap",
+    alignItems: "center",
+    justifyItems: "center",
+    padding: "0 10px",
+    margin: "0 10px",
+  },
+  searchIcon: {
+    width: "30px",
+  },
+  searchBar: {
+    width: "100%",
+  },
+  avatar: {
+    width: "30px",
+    height: "30px",
+    margin: "0 10px",
+    border: "1px solid white",
+  },
 });
 
 class Header extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            popoverAnchor: null,
-        };
-    }
-
-    handleAvatarClick = (event) => {
-        this.setState({ popoverAnchor: event.currentTarget });
+  constructor(props) {
+    super(props);
+    this.state = {
+      popoverAnchor: null,
     };
+  }
 
-    handlePopoverClose = () => {
-        this.setState({ popoverAnchor: null });
-    };
+  handleAvatarClick = (event) => {
+    this.setState({ popoverAnchor: event.currentTarget });
+  };
 
-    navigateToMyAccount = () => {
-        this.handlePopoverClose();
-        this.props.history.push("/profile");
-    };
+  handlePopoverClose = () => {
+    this.setState({ popoverAnchor: null });
+  };
 
-    logoutUser = () => {
-        sessionStorage.removeItem("access-token");
-        this.handlePopoverClose();
-        this.props.history.push("/");
-    };
+  navigateToMyAccount = () => {
+    this.handlePopoverClose();
+    this.props.history.push("/profile");
+  };
 
-    render() {
-        const { classes, location } = this.props;
-        const isUserLoggedIn = sessionStorage.getItem("access-token") !== null;
-        return (
-            <div className="app-header">
-                <Link to="/home">
-                    <span className="app-logo">Image Viewer</span>
-                </Link>
-                {isUserLoggedIn && (
-                    <div className="menu-container">
-                        {location.pathname === "/home" && (
-                            <div className={classes.searchContainer}>
-                                <div className={classes.searchIcon}>
-                                    <Search />
-                                </div>
-                                <Input
-                                    className={classes.searchBar}
-                                    disableUnderline
-                                    placeholder="Search..."
-                                    onChange={this.props.handleInputChange}
-                                />
-                            </div>
-                        )}
-                        <IconButton size="small" onClick={this.handleAvatarClick}>
-                            <Avatar
-                                alt="Profile Picture"
-                                variant="circular"
-                                src={ProfilePic}
-                                className={classes.avatar}
-                            />
-                        </IconButton>
-                        <Popover
-                            id="avatar-popover"
-                            className={classes.popover}
-                            open={Boolean(this.state.popoverAnchor)}
-                            anchorEl={this.state.popoverAnchor}
-                            onClose={this.handlePopoverClose}
-                            anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
-                            transformOrigin={{ vertical: "top", horizontal: "left" }}
-                        >
-                            <div className="popover-menu">
-                                {location.pathname === "/home" && (
-                                    <Fragment>
-                                        <MenuItem onClick={this.navigateToMyAccount}>
-                                            My Account
-                                        </MenuItem>
-                                        <hr className="popover-menu-divider" />
-                                    </Fragment>
-                                )}
-                                <MenuItem onClick={this.logoutUser}>Logout</MenuItem>
-                            </div>
-                        </Popover>
-                    </div>
+  logoutUser = () => {
+    sessionStorage.removeItem("access-token");
+    this.handlePopoverClose();
+    this.props.history.push("/");
+  };
+
+  render() {
+    const { classes, location } = this.props;
+    const isUserLoggedIn = sessionStorage.getItem("access-token") !== null;
+    return (
+      <div className="app-header">
+        <Link to="/home">
+          <span className="app-logo">Image Viewer</span>
+        </Link>
+        {isUserLoggedIn && (
+          <div className="menu-container">
+            {location.pathname === "/home" && (
+              <div className={classes.searchContainer}>
+                <div className={classes.searchIcon}>
+                  <Search />
+                </div>
+                <Input
+                  className={classes.searchBar}
+                  disableUnderline
+                  placeholder="Search..."
+                  onChange={this.props.handleInputChange}
+                />
+              </div>
+            )}
+            <IconButton size="small" onClick={this.handleAvatarClick}>
+              <Avatar
+                alt="Profile Picture"
+                variant="circular"
+                src={ProfilePic}
+                className={classes.avatar}
+              />
+            </IconButton>
+            <Popover
+              id="avatar-popover"
+              className={classes.popover}
+              open={Boolean(this.state.popoverAnchor)}
+              anchorEl={this.state.popoverAnchor}
+              onClose={this.handlePopoverClose}
+              anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
+              transformOrigin={{ vertical: "top", horizontal: "left" }}
+            >
+              <div className="popover-menu">
+                {location.pathname === "/home" && (
+                  <Fragment>
+                    <MenuItem onClick={this.navigateToMyAccount}>
+                      My Account
+                    </MenuItem>
+                    <hr className="popover-menu-divider" />
+                  </Fragment>
                 )}
-            </div>
-        );
-    }
+                <MenuItem onClick={this.logoutUser}>Logout</MenuItem>
+              </div>
+            </Popover>
+          </div>
+        )}
+      </div>
+    );
+  }
 }
 
 export default withRouter(withStyles(classes)(Header));
