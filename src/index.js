@@ -6,8 +6,6 @@ import Controller from "./common/Controller";
 import "./index.css";
 
 ReactDOM.render(
-    <BrowserRouter>
-        <Controller />
-    </BrowserRouter>,
+    <Home/>,
     document.getElementById("root")
 );
