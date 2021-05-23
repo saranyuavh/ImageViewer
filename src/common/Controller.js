@@ -2,7 +2,6 @@ import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import Login from "../screens/login/Login";
 import Home from "../screens/home/Home";
-import Profile from "../screens/profile/Profile";
 
 // Router component to handler page redirects
 export default function Controller(props) {
