@@ -3,8 +3,8 @@
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-around;
-  }
-  
-  .posts-grid {
+}
+
+.posts-grid {
     width: 960px;
-  }
+}
