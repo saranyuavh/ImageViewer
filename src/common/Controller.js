@@ -2,6 +2,7 @@ import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import Login from "../screens/login/Login";
 import Home from "../screens/home/Home";
+import Profile from "../screens/profile/Profile";
 
 // Router component to handler page redirects
 export default function Controller(props) {
@@ -55,6 +56,18 @@ export default function Controller(props) {
           )
         }
       />
+    <Route
+        exact
+        path="/profile"
+        render={({ history }, props) =>
+            isLoggedIn() ? (
+                <Profile {...props} history={history} />
+            ) : (
+                <Redirect to="/login" />
+            )
+        }
+    />
     </Switch>
+
   );
 }
