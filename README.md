@@ -1,27 +1,5 @@
 ## Image Viewer Project
 
-***ImageViewer*** is a web application, which allows a user to view his/her own profile and the images posted by the user on his/her Instagram account.
-
-Listed below are the different pages and the features inside this web application:
-
-**1. Login page:**
-*A user can log in to the application using the ‘access-token’ provided by Instagram.*
-**2. Home page:**  
--   *After logging in, the user is taken to the home page where he/she can view all the images posted by him/her on his/her own Instagram account.*
--   *Along with each image posted, the user can view the date on which the image was posted, the caption of the image, the hashtags (if any) posted with the image, and the number of likes on the image.*
--   *A user can search for an image based on its caption.*
--   *A user can like an image.*
--   *A user can comment on an image.*
--   *On the home page, a user can also choose an image file from his/her system and upload the same on the home page along with providing the caption and hashtags for the image. (Optional Feature)*
--   *On the home page, when a user clicks on his/her profile picture icon on the header, he/she is taken to the profile page.*
-
-**3. Profile page:** 
--   *The user can view the total number of image posts on Instagram along with the number of people he/she follows and the number of people who follow him/her.*
--   *The user can edit his/her full name.*
-
-*After clicking on an image on the profile page, the user can view all the information of the picture and perform all the functionalities on it, which the user could see and perform on the home page.*
-
-
 ***Steps to run this project***:
 Run the below to get added the required modules for the project. ***node_modules*** folder will get created.
 
