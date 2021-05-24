@@ -56,6 +56,7 @@ class Profile extends Component {
       editNameInput: "",
       isPostModalOpen: false,
       modalPost: null,
+      newData:{}
     };
   }
 
@@ -96,6 +97,7 @@ class Profile extends Component {
     const url = `https://graph.instagram.com/me/media?fields=id,caption, media_url&access_token=${sessionStorage.getItem(
       "access-token"
     )}`;
+
     fetch(url, {
       headers: {
         Accept: "application/json;charset=UTF-8",
@@ -103,6 +105,7 @@ class Profile extends Component {
     })
       .then((response) => response.json())
       .then((json) => {
+        console.log(json);
         this.setState({
           postsData: json.data,
           postCount: json.data.length,
