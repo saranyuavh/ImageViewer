@@ -20,9 +20,7 @@ class Home extends Component {
     const url = `https://graph.instagram.com/me/media?fields=id,caption&access_token=${sessionStorage.getItem(
       "access-token"
     )}`;
-    const url2 = `https://graph.instagram.com/17895695668004550?fields=id,media_type,media_url,username,timestamp&access_token=${sessionStorage.getItem(
-        "access-token"
-    )}`;
+    
     fetch(url, {
       headers: {
         Accept: "application/json;charset=UTF-8",

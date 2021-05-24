@@ -82,7 +82,7 @@ class Post extends Component {
             caption: caption,
             hashtags: hashtags,
             username: json.username,
-            profileImageUrl: json.profile_picture,
+            profileImageUrl: ProfilePic,
             mediaImageUrl: json.media_url,
             postedDate: new Date(json.timestamp),
             isLiked: false,
